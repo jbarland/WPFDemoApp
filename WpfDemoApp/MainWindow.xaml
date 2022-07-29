@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfDemoApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDemoApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="59*"/>
+            
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="Exos">
+                <MenuItem Header="Exo1" Click="MenuExo1_Click"></MenuItem>
+                <MenuItem Header="Exo2" Click="MenuExo2_Click"></MenuItem>
+                <MenuItem Header="Exo3" Click="MenuExo3a_Click"></MenuItem>
+                <MenuItem Header="Exo4" Click="MenuExo4_Click"></MenuItem>
+                <MenuItem Header="Exo5" Click="MenuExo5_Click"></MenuItem>
+                <MenuItem Header="Exo6" Click="MenuExo6_Click"></MenuItem>
+                <MenuItem Header="Exo7" Click="MenuExo7_Click"></MenuItem>
+                <MenuItem Header="Exo8" Click="MenuExo8_Click"></MenuItem>
+                <MenuItem Header="Exo9" Click="MenuExo9_Click"></MenuItem>
+                <MenuItem Header="Exo10" Click="MenuExo10_Click"></MenuItem>
+                <MenuItem Header="DemoBinding" Click="MenuBinding_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <ContentControl x:Name="containerUC" Grid.Row="1"></ContentControl>
+
+    </Grid>
+</Window>
