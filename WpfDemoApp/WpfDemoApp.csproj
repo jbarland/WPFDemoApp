@@ -83,12 +83,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Converters\IntColorConverter.cs" />
     <Compile Include="Converters\MessageToStringConverter.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="UserControls\BindingUserControl.xaml.cs">
       <DependentUpon>BindingUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CounterUserControl.xaml.cs">
+      <DependentUpon>CounterUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Exo10UserControl.xaml.cs">
       <DependentUpon>Exo10UserControl.xaml</DependentUpon>
@@ -121,6 +125,7 @@
       <DependentUpon>Exo9UserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BindingViewModel.cs" />
+    <Compile Include="ViewModels\CounterViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,6 +139,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\BindingUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CounterUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +216,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="UserControls\puce.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cat1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\puce.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cat2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cat3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cat4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\dj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\buff-guys.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

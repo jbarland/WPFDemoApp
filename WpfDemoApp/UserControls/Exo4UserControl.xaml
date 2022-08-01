@@ -9,7 +9,7 @@
     <Grid>
         <Button Name="btnWithImg" HorizontalAlignment="Left" Margin="252,157,0,0" VerticalAlignment="Top" Background="{x:Null}" Click="BtnImg_Click">
             <Grid>
-                <Image x:Name="btnImg" Height="100" Width="100" Source="/UserControls/puce.jpg"/>
+                <Image x:Name="btnImg" Height="100" Width="100" Source="../Assets/puce.jpg"/>
                 <TextBlock x:Name="textBtnWithImg" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFEBEECC" FontSize="16" FontWeight="Bold">Cliquez-moi</TextBlock>
             </Grid>
         </Button>

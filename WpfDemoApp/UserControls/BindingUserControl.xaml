@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfDemoApp.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="800">
     <Grid>
         <StackPanel Name="myStackPanel">
             <TextBlock Name="myTextBlock" Text="{Binding MyText}" />
@@ -40,14 +40,20 @@
                 </Button>
             </Grid>
             <!--inutile d'utiliser un converter car par defaut prend le toString-->
-            <!--<ListBox Name="myMsgList" ItemsSource="{Binding MyMessagesList, Converter={StaticResource
-MessageToStringConverter}}"></ListBox>-->
+            <!--<ListBox Name="myMsgList" ItemsSource="{Binding MyMessagesList, Converter={StaticResource MessageToStringConverter}}"></ListBox>-->
+            <TextBlock Style="{StaticResource textBlockTitle}">----Liste de clients simple avec toString---</TextBlock>
             <ListBox Name="myMsgList" 
                      ItemsSource="{Binding MyMessagesList}" 
-                     SelectedIndex="{Binding SelectedIndexValue, UpdateSourceTrigger=PropertyChanged}">
+                     SelectedIndex="{Binding SelectedIndexValue}">
+            </ListBox>
+            <TextBlock Style="{StaticResource textBlockTitle}">----Liste de clients en mode objet----</TextBlock>
+            <ListBox Name="myMsgList2" 
+                     ItemsSource="{Binding MyMessagesList}" 
+                     SelectedIndex="{Binding SelectedIndexValue}" ItemTemplate="{StaticResource DataTemplateMessage}">
             </ListBox>
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -62,15 +68,20 @@ MessageToStringConverter}}"></ListBox>-->
                         Command="{Binding UpdateFirstToMyMessagesList}" 
                         Grid.Column="1">
                 </Button>
+                <Button Name="btnUpdateFirstAuthor" 
+                        Content="Update Author first to List" 
+                        Command="{Binding UpdateAuthorOfFirstToMyMsgList}" 
+                        Grid.Column="2">
+                </Button>
                 <Button Name="btnDeleteFirstMsg" 
                         Content="Delete first to List Msg" 
                         Command="{Binding DeleteFirstToMyMessagesList}" 
-                        Grid.Column="2">
+                        Grid.Column="3">
                 </Button>
                 <Button Name="btnDeleteSelectedMsg" 
                         Content="Delete selected Msg" 
                         Command="{Binding DeleteSelectedFromMyMessagesList}" 
-                        Grid.Column="3">
+                        Grid.Column="4">
                 </Button>
             </Grid>
             <Grid>
@@ -92,9 +103,25 @@ MessageToStringConverter}}"></ListBox>-->
                         Grid.Column="2">
                 </Button>
             </Grid>
-            
+            <TextBlock Style="{StaticResource textBlockTitle}">----Liste d'images---</TextBlock>
+            <ListBox Name="myImgList" ItemsSource="{Binding MyImgList}" ItemTemplate="{StaticResource DataTemplateImg}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <Label Style="{StaticResource worstStyle}">Test custom style</Label>
+            <TextBlock Style="{StaticResource textBlockTitle}">----Liste avec recherche----</TextBlock>
+            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <ListBox Name="mySearchList" 
+                     ItemsSource="{Binding MySearchList}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
         </StackPanel>
-
-
     </Grid>
 </UserControl>

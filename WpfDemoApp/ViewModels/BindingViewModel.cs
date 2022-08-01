@@ -86,7 +86,7 @@ namespace WpfDemoApp.ViewModels
 
         //public bool IsbtnDeleteFirstEnable { get; set; } = true;
 
-        //public ICommand DeleteFirstToMyStringList
+        //public ICommand DeleteFirstToMyStringListV1
         //{
         //    get
         //    {
@@ -145,6 +145,20 @@ namespace WpfDemoApp.ViewModels
             }
         }
 
+        public ICommand UpdateAuthorOfFirstToMyMsgList
+        {
+            get
+            {
+                return new RelayCommand(p =>
+                {
+                    MyMessagesList[0].Author = "Jean le nouveau";
+                }, p =>
+                {
+                    return MyMessagesList.Count > 0;
+                });
+            }
+        }
+
         public ICommand DeleteFirstToMyMessagesList
         {
             get
@@ -158,7 +172,19 @@ namespace WpfDemoApp.ViewModels
                 });
             }
         }
-        public int SelectedIndexValue { get; set; }
+
+        private int _selectedIndexValue;
+
+        public int SelectedIndexValue
+        {
+            get { return _selectedIndexValue; }
+            set
+            {
+                _selectedIndexValue = value;
+                OnPropertyChanged(nameof(SelectedIndexValue));
+            }
+        }
+
 
         public ICommand DeleteSelectedFromMyMessagesList
         {
@@ -175,7 +201,7 @@ namespace WpfDemoApp.ViewModels
                     if (MyMessagesList.Count == 1)
                     {
                         SelectedIndexValue = 0;
-                    }                  
+                    }
                 }, p =>
                 {
                     return MyMessagesList.Count > 0;
@@ -204,6 +230,64 @@ namespace WpfDemoApp.ViewModels
                     NbRandom = new Random().Next(-50, 50);
                 });
             }
+        }
+
+        public ICommand DeleteMessage
+        {
+            get
+            {
+                return new RelayCommand(p =>
+                {
+                    Message msg = (Message)p;
+                    MyMessagesList.Remove(MyMessagesList.FirstOrDefault(m => m == msg));
+                });
+            }
+        }
+
+        public ICommand DeleteMessageById
+        {
+            get
+            {
+                return new RelayCommand(p =>
+                {
+                    int idMsg = (int)p;
+                    MyMessagesList.Remove(MyMessagesList.FirstOrDefault(m => m.Id == idMsg));
+                });
+            }
+        }
+
+        public ObservableCollection<string> MyImgList { get; set; } = new ObservableCollection<string>();
+
+        public ObservableCollection<string> MyInitialList { get; set; } = new ObservableCollection<string>() { "toto", "titi", "tata", "fufu", "fafa" };
+
+        private ObservableCollection<string> _mySearchList = new ObservableCollection<string>();
+        public ObservableCollection<string> MySearchList
+        {
+            get { return _mySearchList; }
+            set
+            {
+                _mySearchList = value;
+                OnPropertyChanged(nameof(MySearchList));
+            }
+        }
+
+        private string _searchText;
+        public string SearchText
+        {
+            get { return _searchText; }
+            set
+            {
+                _searchText = value;
+                OnPropertyChanged(nameof(SearchText));
+                FilteredList(_searchText);
+            }
+        }
+
+        private void FilteredList(string searchText)
+        {
+            MySearchList = MyInitialList;
+
+            MySearchList = new ObservableCollection<string>(MySearchList.Where(l => l.Contains(searchText)).ToList());
         }
 
         public BindingViewModel()
@@ -241,6 +325,13 @@ namespace WpfDemoApp.ViewModels
                 CreatedAt = DateTime.Now,
             };
 
+            MyImgList.Add("../Assets/cat1.jpg");
+            MyImgList.Add("../Assets/cat2.jpg");
+            MyImgList.Add("../Assets/cat3.jpg");
+            MyImgList.Add("../Assets/cat4.jpg");
+            MyImgList.Add("../Assets/dj.png");
+
+            MySearchList = MyInitialList;
         }
     }
 }

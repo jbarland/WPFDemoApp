@@ -27,11 +27,11 @@ namespace WpfDemoApp.UserControls
             DataContext = new BindingViewModel();
 
             myBtn.Width = myTextBlock.Width = myTextBox.Width = myComboList.Width = 300;
-            myBtn.Margin = myTextBlock.Margin = myTextBox.Margin = myComboList.Margin = new Thickness(0,6,0,6);
-            btnAdd.Margin = btnDeleteFirst.Margin = btnAddMsg.Margin = btnDeleteSelectedMsg.Margin = new Thickness(6);
-            btnUpdateFirst.Margin = new Thickness(0, 6, 0, 6);
-            btnUpdateFirstMsg.Margin = new Thickness(0, 6, 3, 6);
-            btnDeleteFirstMsg.Margin = new Thickness(3, 6, 0, 6);
+            //myBtn.Margin = myTextBlock.Margin = myTextBox.Margin = myComboList.Margin = new Thickness(0,6,0,6);
+            //btnAdd.Margin = btnDeleteFirst.Margin = btnAddMsg.Margin = btnDeleteSelectedMsg.Margin = new Thickness(6);
+            //btnUpdateFirst.Margin = new Thickness(0, 6, 0, 6);
+            //btnUpdateFirstMsg.Margin = new Thickness(0, 6, 3, 6);
+            //btnDeleteFirstMsg.Margin = new Thickness(3, 6, 0, 6);
 
 
             intLabel.HorizontalContentAlignment = HorizontalAlignment.Right;

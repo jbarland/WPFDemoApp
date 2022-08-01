@@ -112,5 +112,13 @@ namespace WpfDemoApp
             containerUC.Content = demoBinding;
 
         }
+
+        private void Counter_Click(object sender, RoutedEventArgs e)
+        {
+            var counter = new CounterUserControl();
+
+            containerUC.Content = counter;
+
+        }
     }
 }

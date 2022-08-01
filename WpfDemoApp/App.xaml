@@ -7,5 +7,54 @@
     <Application.Resources>
         <Converters:MessageToStringConverter x:Key="MessageToStringConverter"/>
         <Converters:IntColorConverter x:Key="IntColorConverter"/>
+        <Converters:DateConverter x:Key="DateConverter"/>
+
+        <DataTemplate x:Key="DataTemplateMessage">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{Binding Id}" Foreground="DarkBlue"></Label>
+                <Label Content=":" Foreground="DarkBlue"></Label>
+                <Label Content="{Binding Author}" Foreground="DarkViolet"></Label>
+                <Label Content="{Binding Content}" Foreground="DarkRed"></Label>
+                <Label Content="{Binding CreatedAt, Converter={StaticResource DateConverter}}"
+                       Foreground="DarkGreen">
+
+                </Label>
+
+                <Button Name="btnDeleteMsg" 
+                        Content="Delete object" 
+                        Command="{Binding DataContext.DeleteMessage, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" 
+                        CommandParameter="{Binding}">
+                </Button>
+                <Button Name="btnDeleteMsgById" 
+                        Content="Delete by id" 
+                        Command="{Binding DataContext.DeleteMessageById, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" 
+                        CommandParameter="{Binding Id}">
+                </Button>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DataTemplateImg">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding}" Width="175"></Image>
+            </StackPanel>
+        </DataTemplate>
+
+        <!--style-->
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="6"></Setter>
+        </Style>
+        <Style x:Key="textBlockTitle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="6, 16, 0, 8"></Setter>
+        </Style>
+
+        <Style x:Key="worstStyle" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="Green" />
+            <Setter Property="Background" Value="#9999" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

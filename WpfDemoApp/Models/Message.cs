@@ -17,10 +17,54 @@ namespace WpfDemoApp.Models
 
         }
 
-        public int Id { get; set; }
-        public string Content { get; set; }
-        public string Author { get; set; }
-        public DateTime CreatedAt { get; set; }
+        private int _id;
+
+        public int Id
+        {
+            get { return _id; }
+            set 
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+
+        private string _content;
+
+        public string Content
+        {
+            get { return _content; }
+            set 
+            { 
+                _content = value;
+                OnPropertyChanged(nameof(Content));
+            }
+        }
+
+        private string _author;
+
+        public string Author
+        {
+            get { return _author; }
+            set 
+            { 
+                _author = value;
+                OnPropertyChanged(nameof(Author));
+            }
+        }
+
+        private DateTime dateTime_createdAt;
+
+        public DateTime CreatedAt
+        {
+            get { return dateTime_createdAt; }
+            set 
+            { 
+                dateTime_createdAt = value;
+                OnPropertyChanged(nameof(CreatedAt));
+            }
+        }
+
 
         public override string ToString()
         {
